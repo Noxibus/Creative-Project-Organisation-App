@@ -15,6 +15,7 @@ import { Asset } from "../../../models/asset";
 import { GlobalStyles } from "../../../util/constants/styles";
 import ImagePicker from "./ImagePicker";
 
+//default state = empty string
 function AssetForm({ onCreateAsset }) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
