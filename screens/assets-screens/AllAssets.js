@@ -17,6 +17,7 @@ import { GlobalStyles } from "../../util/constants/styles";
 import Asset from "./Asset";
 import IconButton from "../../components/functional/ui/IconButton";
 
+//TODO: CENTRALISE IMAGE STATE
 const Images = [
   { uri: require("./image1.jpg") },
   { uri: require("./image2.jpg") },
