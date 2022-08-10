@@ -25,13 +25,13 @@ import IssuesContextProvider from "./store/IssuesContext";
 import UpdateIssue from "./screens/issue-screens/UpdateIssue";
 import AccountOverview from "./screens/AccountOverview.js";
 import { Provider as PaperProvider } from "react-native-paper";
-
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
 //THIS FUNCTION WILL GET LOADED INTO AUTH STACK, THIS CONTAINS ALL THE PROJECT/TASK/ISSUE SCREENS A SIGNED IN USER SHOULD SEE
 function ProjectsOverview() {
-  const projectsCtx = useContext(ProjectContextProvider);
+  //redux state
+  // const { projects } = useSelector((state) => state.project);
   const authCtx = useContext(AuthContext);
   return (
     <BottomTabs.Navigator
@@ -233,9 +233,11 @@ export default function App() {
         <ProjectContextProvider>
           <TasksContextProvider>
             <IssuesContextProvider>
+              {/* <Provider store={store}> */}
               <AuthContextProvider>
                 <NavigationTree />
               </AuthContextProvider>
+              {/* </Provider> */}
             </IssuesContextProvider>
           </TasksContextProvider>
         </ProjectContextProvider>

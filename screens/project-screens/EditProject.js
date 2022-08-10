@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
 //need to know what project id we're editing
 

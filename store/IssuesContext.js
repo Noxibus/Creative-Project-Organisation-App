@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import { createContext, useReducer } from "react";
 
 const DUMMY_ISSUES = [
