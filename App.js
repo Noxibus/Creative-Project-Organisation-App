@@ -236,6 +236,7 @@ function NavigationTree() {
   );
 }
 
+//Wrapping Context providers up with one another
 export default function App() {
   return (
     <>

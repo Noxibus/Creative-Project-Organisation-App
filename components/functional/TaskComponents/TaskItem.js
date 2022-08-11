@@ -1,16 +1,15 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
-import { GlobalStyles } from "../../../util/constants/styles";
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { useContext, useState } from "react";
 import Checkbox from "expo-checkbox";
-import IconButton from "../ui/IconButton";
-import { TasksContext } from "../../../store/TasksContext";
+import React, { useContext, useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
-//TODO: ADD DELETE/MARK TASK COMPLETE LOGIC
+import { TasksContext } from "../../../store/TasksContext";
+import { GlobalStyles } from "../../../util/constants/styles";
+import IconButton from "../ui/IconButton";
 
 //TODO: LINK TASK ID WITH PROJECT ID SO NOT ALL TASKS APPEAR FOR EVERY PROJECT
-
-//might have to change props to task, or project
 
 function TaskItem({ id, taskTitle, text, isComplete, route }) {
   const navigation = useNavigation();
@@ -22,16 +21,11 @@ function TaskItem({ id, taskTitle, text, isComplete, route }) {
   async function deleteTaskHandler() {
     //telling the function we're submitting data and updating local state accordingly
     setIsSendingData(true);
-    // try {
     await deleteTask(taskId);
     //delete project locally
     tasksCtx.deleteProject(taskId);
     //then delete on the backend
     navigation.goBack();
-    // } catch (error) {
-    //   setError("Unable to delete project");
-    //   setIsSendingData(false);
-    // }
   }
 
   return (
@@ -58,6 +52,7 @@ function TaskItem({ id, taskTitle, text, isComplete, route }) {
               ? GlobalStyles.colors.orange400
               : GlobalStyles.colors.midGrey
           }
+          //TODO: ADD DELETE/MARK TASK COMPLETE LOGIC
           //  onPress={() => id.markComplete()}
         />
       </View>

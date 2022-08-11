@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 //MIGHT HAVE TO LINK PROJECTS/ISSUES/TASKS CONTEXTS LATER SOMEHOW
 
 //PARAMS: id, taskTitle, text, isComplete

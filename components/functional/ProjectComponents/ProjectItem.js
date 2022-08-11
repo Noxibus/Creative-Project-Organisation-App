@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/react-in-jsx-scope */
+
+import { useNavigation } from "@react-navigation/native";
 import { Pressable, View, Text, StyleSheet } from "react-native";
+
 import { GlobalStyles } from "../../../util/constants/styles";
 import { getFormattedDate } from "../../../util/date";
-import { useNavigation } from "@react-navigation/native";
 
 function ProjectItem({
   id,
@@ -39,6 +39,7 @@ function ProjectItem({
     });
   }
 
+  //clickable project item component via which data is passed through
   return (
     <Pressable
       style={({ pressed }) => pressed && styles.pressed}

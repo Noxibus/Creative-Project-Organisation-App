@@ -1,15 +1,13 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 import { useContext, useLayoutEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
-import IconButton from "../../components/functional/ui/IconButton";
-import { GlobalStyles } from "../../util/constants/styles";
-import { ProjectsContext } from "../../store/ProjectsContext";
-import ProjectInputForm from "../../components/functional/ProjectComponents/ProjectInputForm";
-import { storeProject, updateProject, deleteProject } from "../../util/http";
-import LoadingSpinner from "../../components/functional/ui/LoadingSpinner";
-import ErrorIndicator from "../../components/functional/ui/ErrorIndicator";
 
-//TODO: ADD ADDITIONAL FIELDS TO PROJECT ENTRY FORM, EG USERS
+import ProjectInputForm from "../../components/functional/ProjectComponents/ProjectInputForm";
+import IconButton from "../../components/functional/ui/IconButton";
+import { ProjectsContext } from "../../store/ProjectsContext";
+import { GlobalStyles } from "../../util/constants/styles";
+import { storeProject, updateProject, deleteProject } from "../../util/http";
 
 //project item has ID => add project || already has an ID => edit screen
 //'route' prop to extract ID

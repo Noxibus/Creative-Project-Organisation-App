@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-//blueprint for an image asset object
 
+//blueprint for an image asset object
 export class Asset {
   constructor(title, imageUri, dateAdded, addedBy) {
     this.title = title;
