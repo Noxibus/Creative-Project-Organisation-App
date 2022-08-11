@@ -27,7 +27,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
-function ProjectOverview({ route, navigation, itemData }) {
+function ProjectOverview({ route, navigation, id }) {
   return (
     <BottomTabs.Navigator
       screenOptions={({ navigation }) => ({

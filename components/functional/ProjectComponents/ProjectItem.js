@@ -25,7 +25,18 @@ function ProjectItem({
     //id route parameters to pass to manage project screens. In App.js the project item does not yet have an ID because it hasn't been made yet
     //press to go to manage projects
     //navigation.navigate("ManageProjects", { id: id });
-    navigation.navigate("ViewProject", { id: id });
+    console.log({ id: id });
+    // navigation.navigate("ViewProject", { id: id });
+    //nested navigation
+    navigation.navigate("ViewProject", {
+      screen: "ViewProject",
+      params: {
+        screen: "ProjectInformation",
+        params: {
+          screen: "TasksOverview",
+        },
+      },
+    });
   }
 
   return (

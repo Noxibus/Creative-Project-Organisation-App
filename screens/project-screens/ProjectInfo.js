@@ -36,6 +36,7 @@ function ProjectInfo(route, navigation, id) {
     await deleteProject(projectId);
     //delete project locally
     projectsCtx.deleteProject(projectId);
+    console.log(id);
     //then delete on the backend
     navigation.goBack();
     // } catch (error) {
