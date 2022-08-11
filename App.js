@@ -25,6 +25,7 @@ import IssuesContextProvider from "./store/IssuesContext";
 import UpdateIssue from "./screens/issue-screens/UpdateIssue";
 import AccountOverview from "./screens/AccountOverview.js";
 import { Provider as PaperProvider } from "react-native-paper";
+import ProjectInfo from "./screens/project-screens/ProjectInfo";
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -206,6 +207,15 @@ function ProjectsAuthenticated() {
         component={ViewProject}
         options={{
           title: "Project Overview",
+          headerTintColor: GlobalStyles.colors.orange100,
+        }}
+      />
+      <Stack.Screen
+        name="ProjectInfo"
+        //TODO: FIND A WAY TO MAKE THE PROJECT TITLE THE PAGE TITLE
+        component={ProjectInfo}
+        options={{
+          title: "Project Information",
           headerTintColor: GlobalStyles.colors.orange100,
         }}
       />

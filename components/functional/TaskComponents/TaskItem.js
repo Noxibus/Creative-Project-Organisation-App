@@ -12,15 +12,26 @@ import { TasksContext } from "../../../store/TasksContext";
 
 //might have to change props to task, or project
 
-function TaskItem({ id, taskTitle, text, isComplete }) {
+function TaskItem({ id, taskTitle, text, isComplete, route }) {
   const navigation = useNavigation();
   //checkbox state
   const [isChecked, setChecked] = useState(false);
-  const route = useRoute();
+  //const route = useRoute();
   const tasksCtx = useContext(TasksContext);
 
-  function deleteTask(id) {
-    tasksCtx.deleteTask(id);
+  async function deleteTaskHandler() {
+    //telling the function we're submitting data and updating local state accordingly
+    setIsSendingData(true);
+    // try {
+    await deleteTask(taskId);
+    //delete project locally
+    tasksCtx.deleteProject(taskId);
+    //then delete on the backend
+    navigation.goBack();
+    // } catch (error) {
+    //   setError("Unable to delete project");
+    //   setIsSendingData(false);
+    // }
   }
 
   return (
@@ -36,7 +47,7 @@ function TaskItem({ id, taskTitle, text, isComplete }) {
           icon="close-sharp"
           color={GlobalStyles.colors.errorRed}
           size={28}
-          onPress={deleteTask}
+          onPress={deleteTaskHandler}
         />
         <Checkbox
           style={styles.checkbox}

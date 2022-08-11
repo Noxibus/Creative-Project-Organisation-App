@@ -3,6 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-case-declarations */
 import { createContext, useReducer } from "react";
+import { DUMMY_PROJECTS } from "./dummy-data/DUMMY_PROJECTS";
 
 //defining data shape
 export const ProjectsContext = createContext({
@@ -55,7 +56,9 @@ function projectsReducer(state, action) {
 function ProjectContextProvider({ children }) {
   //dispatch = dispatch a new action to the reducer function
   //initial starting state values are retrieved from Firebase backend
-  const [projectsState, dispatch] = useReducer(projectsReducer, []);
+  // const [projectsState, dispatch] = useReducer(projectsReducer, []);
+  //Starting vals coming from DUMMY_PROJECTS
+  const [projectsState, dispatch] = useReducer(projectsReducer, DUMMY_PROJECTS);
 
   //projectData is coming from the reducer
   function addProject(projectData) {

@@ -1,7 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+
+import { GlobalStyles } from "../../util/constants/styles";
+
+import { useNavigation } from "@react-navigation/native";
+import { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -10,29 +13,48 @@ import {
   Button,
   Alert,
 } from "react-native";
-import { GlobalStyles } from "../../util/constants/styles";
-import { useContext } from "react";
-
-import { ProjectsContext } from "../../store/ProjectsContext";
-import { useNavigation } from "@react-navigation/native";
-import UserAvatar from "../../components/functional/UserComponents/UserAvatar";
 import { Avatar } from "react-native-paper";
+
+import UserAvatar from "../../components/functional/UserComponents/UserAvatar";
 import UserCard from "../../components/functional/UserComponents/UserCard";
+import { ProjectsContext } from "../../store/ProjectsContext";
 
 //TODO: FIX NAVIGATION
-function ProjectInfo(route) {
-  //const navigation = useNavigation();
+function ProjectInfo(route, navigation, id) {
+  const [isSendingData, setIsSendingData] = useState();
   const projectsCtx = useContext(ProjectsContext);
   const projectId = route.params?.id;
-  const navigation = useNavigation();
+  //find a specific project, return true if the project is the one we are looking for
+  const selectedProject = projectsCtx.projects.find(
+    (project) => project.id === projectId
+  );
+
+  async function deleteProjectHandler() {
+    //telling the function we're submitting data and updating local state accordingly
+    setIsSendingData(true);
+    // try {
+    await deleteProject(projectId);
+    //delete project locally
+    projectsCtx.deleteProject(projectId);
+    //then delete on the backend
+    navigation.goBack();
+    // } catch (error) {
+    //   setError("Unable to delete project");
+    //   setIsSendingData(false);
+    // }
+  }
+
+  function cancelHandler() {
+    navigation.goBack();
+  }
 
   //TODO: FIGURE OUT HOW TO PASS PROJECT DATA INTO HERE
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.background}>
         <Text>{route.params?.title}</Text>
-        {/* //TODO:Replace with custom buttons */}
         <Text style={styles.textTitle}>Infographic Design</Text>
+        <Text style={styles.textTitle}>{selectedProject}</Text>
         <View style={styles.sepLine}></View>
         <View style={styles.projectInnerContainer}>
           <Text style={styles.textTitle3}> Summary</Text>
@@ -102,11 +124,15 @@ function ProjectInfo(route) {
                 [
                   {
                     text: "Cancel",
-                    onPress: () => console.log("Cancel clicked"),
+                    onPress: () => {
+                      deleteProjectHandler();
+                    },
                   },
                   {
                     text: "Delete",
-                    onPress: () => console.log("Delete clicked"),
+                    onPress: () => {
+                      deleteProjectHandler();
+                    },
                   },
                 ]
               );
